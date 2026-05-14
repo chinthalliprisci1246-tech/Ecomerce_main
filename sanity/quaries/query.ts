@@ -1,12 +1,8 @@
 import { client } from "@/sanity/lib/client";
 
 export const LATEST_BLOG_QUERY = `
-  *[_type == "blog" && isLatest == true] | order(name asc) {
-    ...,
-    blogcategories[]-> {
-      _id,
-      title
-    }
+  *[_type == "blog"] | order(title asc) {
+    _id, title, slug, mainImage, description, publishedAt
   }
 `;
 
@@ -25,10 +21,7 @@ export const PRODUCT_BY_SLUG_QUERY = `*[_type == "product" && slug.current == $s
 
 export const ALL_BRANDS_QUERY = `
   *[_type == "brand"] | order(title asc) {
-    _id,
-    title,
-    slug,
-    image
+    _id, title, slug, logo
   }
 `;
 

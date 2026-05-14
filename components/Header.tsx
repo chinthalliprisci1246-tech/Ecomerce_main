@@ -6,7 +6,7 @@ import MobileMenu from './MobileMenu'
 import Container from './Container'
 import Logo from './Logo'
 import HeaderMenu from './HeaderMenu'
-import { useCurrentUser } from 'sanity'
+
 
 
 const Header = async () => {

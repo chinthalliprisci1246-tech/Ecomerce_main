@@ -1,15 +1,17 @@
-import React from 'react'
-import Link from 'next/link';
-import { Heart } from 'lucide-react';
-const FavoriteButton = () => {
-  return (
-    <div>
-     <Link href={"/cart"} className='group relative'>
-     <Heart className='w-5 h-5 hover: text-shop_light_green hoverEffect'/>
-     <span className='absolute -top-1 -right-1 bg-shop_dark_green text-white h-3.5'>@</span>
-     </Link> 
-    </div>
-  )
-}
+"use client";
+import { useWishlistStore } from "@/store/wishlistStore";
+import { Heart } from "lucide-react";
+import Link from "next/link";
 
+const FavoriteButton = () => {
+  const { wishlistItems } = useWishlistStore();
+  return (
+    <Link href="/wishlist" className="group relative">
+      <Heart className="w-5 h-5 hover:text-shop-dark-green hoverEffect" />
+      <span className="absolute -top-1 -right-1 bg-shop-dark-green text-white h-3.5 w-3.5 rounded-full text-xs font-semibold flex items-center justify-center">
+        {wishlistItems.length}
+      </span>
+    </Link>
+  );
+};
 export default FavoriteButton;
