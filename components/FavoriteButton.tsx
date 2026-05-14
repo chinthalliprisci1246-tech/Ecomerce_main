@@ -1,0 +1,15 @@
+import React from 'react'
+import Link from 'next/link';
+import { Heart } from 'lucide-react';
+const FavoriteButton = () => {
+  return (
+    <div>
+     <Link href={"/cart"} className='group relative'>
+     <Heart className='w-5 h-5 hover: text-shop_light_green hoverEffect'/>
+     <span className='absolute -top-1 -right-1 bg-shop_dark_green text-white h-3.5'>@</span>
+     </Link> 
+    </div>
+  )
+}
+
+export default FavoriteButton;

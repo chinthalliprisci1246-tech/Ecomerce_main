@@ -1,26 +1,91 @@
+/* globals.css */
 @import "tailwindcss";
 
+
+/* ================= ROOT VARIABLES ================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Shop Colors */
+  --shop-dark-green: #064e3b;
+  --shop-light-green: #10b981;
+  --shop-dark-blue: #6c7fd8;
+  --shop-orange: #fb6c08;
+  --shop-light : #f1f3f8;
+  --shop-light-text: #686e7d;
+  --shop-lighter-green: #93D991;
+  --shop-deal: #f1f3f8;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Light Theme */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  --border: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
 }
 
-@theme inline {
+/* ================= DARK MODE ================= */
+
+.dark {
+  --shop-dark-green: #10b981;
+  --shop-light-green: #064e3b;
+  --shop-orange: #fb6c08;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  --border: oklch(1 0 0 / 10%);
+  --ring: oklch(0.556 0 0);
+}
+
+/* ================= CUSTOM VARIANT ================= */
+
+@custom-variant dark (&:is(.dark *));
+
+/* ================= THEME TOKENS ================= */
+
+@theme {
+  --color-shop-dark-green: var(--shop-dark-green);
+  --color-shop-light-green: var(--shop-light-green);
+  --color-shop-dark-blue: var(--shop-dark-blue);
+  --color-shop-orange: var(--shop-orange);
+  --color-shop-light: var(--color-shop-light);
+  --color-shop-light-text: var(--color-shop-light-text);
+  --color-shop-lighter-green: var(--color-shop-lighter-green);
+  --color-shop-deal: var(--color-shop-deal);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ================= BASE STYLES ================= */
+
+@layer base {
+  * {
+    @apply border-border;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .hoverEffect {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+  body {
+    font-family: var(--font-poppins);
+  }
 }
