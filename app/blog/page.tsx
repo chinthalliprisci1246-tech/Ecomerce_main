@@ -39,9 +39,6 @@ const BlogPage = async () => {
                 <h2 className="font-bold text-gray-800 line-clamp-2 group-hover:text-shop-dark-green transition">
                   {blog?.title}
                 </h2>
-                {blog?.description && (
-                  <p className="text-sm text-gray-500 line-clamp-2">{blog.description}</p>
-                )}
                 <p className="flex items-center gap-1 text-xs text-gray-400 mt-1">
                   <Calendar size={12} />
                   {blog?.publishedAt && dayjs(blog.publishedAt).format("MMMM D, YYYY")}
