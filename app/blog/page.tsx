@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+/*import Container from "@/components/Container";
 import { getLatestBlogs } from "@/sanity/quaries";
 import { urlFor } from "@/sanity/lib/image";
 import { Blog } from "@/sanity.types";
@@ -52,4 +52,4 @@ const BlogPage = async () => {
   );
 };
 
-export default BlogPage;
+export default BlogPage; */
