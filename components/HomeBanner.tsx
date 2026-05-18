@@ -22,15 +22,7 @@ const HomeBanner = () => {
         </Link>
       </div>
 
-      {/* IMAGE */}
-      <div className="hidden ">
-        <Image
-          src=""
-          alt="Headphones"
-          width={260}
-          height={260}
-        />
-      </div>
+     
 
     </div>
   );

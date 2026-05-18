@@ -56,15 +56,15 @@ const Footer = () => {
         </div>
         
           <div className='py-6 border-t text-center text-sm text-gray-600 max-w-full'>
-            <p>
+            <div>
           ^{new Date().getFullYear()}{" "}
             <Logo className='text-md' />
                  . All rights reserved
-            </p>
+            </div>
           </div>
       </Container>
     </footer>
   )
 }
 
-export default Footer
+export default Footer;
