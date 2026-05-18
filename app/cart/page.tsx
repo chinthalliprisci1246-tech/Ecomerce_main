@@ -1,15 +1,24 @@
 "use client";
-
 import Container from "@/components/Container";
 import { useCartStore } from "@/store/cartStore";
 import { ShoppingBag, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
   const { cartItems, removeFromCart, increaseQty, decreaseQty, clearCart } = useCartStore();
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  if (!session) {
+    router.push("/login");
+    return null;
+  }
+ 
 
   return (
     <Container className="py-10 min-h-screen">
@@ -60,9 +69,10 @@ const CartPage = () => {
             <div className="border-t pt-4 flex justify-between font-bold text-gray-800">
               <span>Total</span><span>${total.toFixed(2)}</span>
             </div>
-            {/* 💳 RAZORPAY: call POST /api/razorpay with { amount: total * 100 } */}
-            <button className="w-full bg-shop-dark-green text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
-              onClick={() => alert("💳 Connect Razorpay here")}>
+            <button
+              className="w-full bg-shop-dark-green text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
+              onClick={() => alert("💳 Connect Razorpay here")}
+            >
               Proceed to Pay
             </button>
           </div>
