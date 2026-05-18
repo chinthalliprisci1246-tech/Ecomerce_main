@@ -25,6 +25,7 @@ export const product = defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+
     defineField({
       name: "images",
       title: "Product Images",

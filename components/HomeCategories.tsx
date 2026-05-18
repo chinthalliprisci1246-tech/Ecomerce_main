@@ -37,9 +37,9 @@ const HomeCategories = ({ categories }: { categories: Category[] }) => {
 
             {/* TEXT PART */}
             <div className="space-y-1.5">
-              <h2 className="text-base font-semibold">{category.title}</h2>
+              <h2 className="text-base font-semibold">{}</h2>
               <p className="text-sm font-bold text-shop-dark-green">
-                <span>({category?.productCount || 2})</span> 
+                <span>({})</span> 
               </p>
             </div>
           </div>

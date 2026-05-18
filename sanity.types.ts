@@ -225,7 +225,9 @@ export type Blog = {
     current?: string;
   };
   mainImage?: Image;
+  description?: string;
   publishedAt?: string;
+  isLatest?: boolean;
 };
 // ✅ Add this manually — for getProductsByCategory query result
 export type ProductQueryResult = {

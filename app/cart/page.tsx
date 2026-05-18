@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 const CartPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
-  const { cartItems, removeFromCart, increaseQty, decreaseQty, clearCart } = useCartStore();
+  const { cartItems, removeFromCart, clearCart } = useCartStore();
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
 
@@ -43,11 +43,6 @@ const CartPage = () => {
                 <div className="flex-1">
                   <p className="font-semibold text-gray-800">{item.name}</p>
                   <p className="text-sm text-gray-500">${item.price}</p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <button onClick={() => decreaseQty(item._id)} className="w-7 h-7 border rounded-full text-sm font-bold hover:bg-gray-100">-</button>
-                    <span className="text-sm font-semibold">{item.qty}</span>
-                    <button onClick={() => increaseQty(item._id)} className="w-7 h-7 border rounded-full text-sm font-bold hover:bg-gray-100">+</button>
-                  </div>
                 </div>
                 <button onClick={() => removeFromCart(item._id)} className="text-red-400 hover:text-red-600 transition">
                   <Trash2 size={18} />
