@@ -1,13 +1,8 @@
-import { defineLive } from "next-sanity/live";
 import { client } from './client'
 
-const token = process.env.SANITY_API_READ_TOKEN;
+export const sanityFetch = async ({ query, params = {} }: { query: string; params?: Record<string, unknown> }) => {
+  const data = await client.fetch(query, params);
+  return { data };
+};
 
-export const { sanityFetch, SanityLive } = defineLive({
-  client,
-  serverToken: token,
-  browserToken: token,
-  fetchOptions: {
-    revalidate: 0,
-  },
-});
+export const SanityLive = () => null;
