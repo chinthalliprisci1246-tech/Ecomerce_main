@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+
 
 export default function LoginPage() {
   return (
@@ -9,11 +9,9 @@ export default function LoginPage() {
       <p className="text-gray-500 text-sm">Sign in to continue shopping</p>
 
       <button
-        onClick={() => signIn("google", { callbackUrl: "/" })}
         className="flex items-center gap-3 border border-gray-300 px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-50 transition"
       >
-        <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
-        Continue with Google
+        
       </button>
     </div>
   );

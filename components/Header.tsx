@@ -1,12 +1,11 @@
 import SearchBar from './SearchBar'
 import CartIcon from './CartIcon'
 import FavoriteButton from './FavoriteButton'
-import SignIn from './SignIn'
 import MobileMenu from './MobileMenu'
 import Container from './Container'
 import Logo from './Logo'
 import HeaderMenu from './HeaderMenu'
-
+import SignIn from './SignIn'
 
 
 const Header = async () => {
