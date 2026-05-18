@@ -1,11 +1,11 @@
-/*import Container from "@/components/Container";
+import Container from "@/components/Container";
 import { getLatestBlogs } from "@/sanity/quaries";
-import { urlFor } from "@/sanity/lib/image";
 import { Blog } from "@/sanity.types";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar } from "lucide-react";
 import dayjs from "dayjs";
+import { urlFor } from "@/sanity/lib/image";
 
 const BlogPage = async () => {
   const blogs = await getLatestBlogs();
@@ -13,7 +13,6 @@ const BlogPage = async () => {
   return (
     <Container className="py-10 min-h-screen">
       <h1 className="text-2xl font-bold text-gray-800 mb-8">Blog</h1>
-
       {blogs.length === 0 ? (
         <p className="text-center text-gray-400 py-20">No blogs published yet.</p>
       ) : (
@@ -52,4 +51,4 @@ const BlogPage = async () => {
   );
 };
 
-export default BlogPage; */
+export default BlogPage;
