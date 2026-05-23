@@ -11,10 +11,6 @@ const CartPage = () => {
   const { cartItems, removeFromCart, clearCart } = useCartStore();
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
-
- 
- 
-
   return (
     <Container className="py-10 min-h-screen">
       <h1 className="text-2xl font-bold text-gray-800 mb-8">Your Cart</h1>
