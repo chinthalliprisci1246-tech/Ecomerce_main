@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import { Title } from "@/components/ui/text";
-import { getDealProducts } from "@/sanity/quaries";
+import { getDealProducts } from "@/sanity/queries";
 import ProductCard from "@/components/ProductCard";
 
 const DealPage = async () => {

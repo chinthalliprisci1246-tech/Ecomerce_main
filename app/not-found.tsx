@@ -13,29 +13,26 @@ const NotFoundPage = () => {
         Looking for something?
       </h2>
       <p className='mt-2 text-sm text-gray-600'>
-        We&apos; re sorry. the web adress you entered is 
-        not functioning 
-        page on our site.
+        We&apos;re sorry. the web address you entered is 
+        not a functioning page on our site.
       </p>
       <div className='mt-8 space-y-6'>
-        <div className='rounded-md shadow0sm space-y-4'>
+        <div className='rounded-md space-y-4'>
             <Link 
             href="/"
-            className='w-full flex items-centre justify-centre px-4 py-2
+            className='w-full flex items-center justify-center px-4 py-2
             border border-transparent text-sm font-semibold rounded-md
             text-white bg-shop-dark-green/80 hover:bg-shop-dark-green
-            focus:outline-none focus:ring-2 focus:ring-offset-2
-            focus:shadow-shop-light-green hoverEffect'
-            > Go to Shopcart&apos; home page
+            focus:outline-none focus:ring-2 focus:ring-offset-2 hoverEffect'
+            >Go to ShopkarT home page
             </Link>
         <Link
-         href='/help'
-         className='w-full flex items-centre justify-centre px-4 py-2
+         href='/shop'
+         className='w-full flex items-center justify-center px-4 py-2
             border border-transparent text-sm font-semibold rounded-md
             text-white bg-shop-dark-green/80 hover:bg-shop-dark-green
-            focus:outline-none focus:ring-2 focus:ring-offset-2
-            focus:shadow-shop-light-green hoverEffect'>
-               Help
+            focus:outline-none focus:ring-2 focus:ring-offset-2 hoverEffect'>
+               Browse Products
         </Link>
         </div>
       </div>

@@ -40,7 +40,24 @@ export type Product = {
   categories?: Array<string>;
   status?: "sale" | "new" | "hot";
 };
-
+// Manually added
+export type Brand = {
+  _id: string;
+  _type: "brand";
+  title?: string;
+  slug?: Slug;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
 // ✅ Manually added — TypeGen returns Array<never> due to missing category schema in schema.json
 export type Category = {
   _id: string;
@@ -65,6 +82,8 @@ export type SanityImageCrop = {
   left?: number;
   right?: number;
 };
+
+
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
@@ -229,6 +248,7 @@ export type Blog = {
   publishedAt?: string;
   isLatest?: boolean;
 };
+
 // ✅ Add this manually — for getProductsByCategory query result
 export type ProductQueryResult = {
   _id: string;
@@ -243,3 +263,4 @@ export type ProductQueryResult = {
     _key: string;
   }>;
 };
+

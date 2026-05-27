@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Title } from "./ui/text";
 import { urlFor } from "@/sanity/lib/image";
-import { Category } from "@/types";
+import { Category } from "@/sanity.types";
 import Link from "next/link";
 
 const HomeCategories = ({ categories }: { categories: Category[] }) => {

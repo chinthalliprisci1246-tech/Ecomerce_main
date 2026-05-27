@@ -1,17 +1,44 @@
 // app/product/[slug]/page.tsx
-import { getProductBySlug } from "@/sanity/quaries";
+import { getProductBySlug } from "@/sanity/queries";
 import Container from "@/components/Container";
 import ImageView from "@/components/ImageView";
 import PriceView from "@/components/PriceView";
 import AddToButtonCart from "@/components/AddToButtonCart";
 import { notFound } from "next/navigation";
 import { StarIcon, ShieldCheck, RotateCcw, Truck } from "lucide-react";
+import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// Deterministic pseudo-random number from a string seed
+// ── SEO metadata per product ──────────────────────────────────────────────────
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return { title: "Product Not Found" };
+  }
+
+  return {
+    title: product.name,
+    description:
+      product.description ??
+      `Buy ${product.name} at the best price on eKart.`,
+    openGraph: {
+      title: product.name ?? "Product",
+      description:
+        product.description ??
+        `Buy ${product.name} at the best price on eKart.`,
+      images: product.images?.[0]
+        ? [{ url: `https://cdn.sanity.io/images/${product.images[0]}` }]
+        : [],
+    },
+  };
+}
+
+// Deterministic pseudo-random — same product always gets same rating
 function seededRandom(seed: string, index: number): number {
   let hash = 0;
   const str = seed + index;
@@ -42,11 +69,11 @@ function generateReviews(productId: string) {
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
   ];
 
-  const count = 3 + Math.floor(seededRandom(productId, 0) * 3); // 3–5 reviews
+  const count = 3 + Math.floor(seededRandom(productId, 0) * 3);
   return Array.from({ length: count }, (_, i) => {
     const nameIdx = Math.floor(seededRandom(productId, i + 1) * names.length);
     const commentIdx = Math.floor(seededRandom(productId, i + 10) * comments.length);
-    const rating = 3 + Math.floor(seededRandom(productId, i + 20) * 3); // 3–5 stars
+    const rating = 3 + Math.floor(seededRandom(productId, i + 20) * 3);
     const month = months[Math.floor(seededRandom(productId, i + 30) * 12)];
     const day = 1 + Math.floor(seededRandom(productId, i + 40) * 27);
     return {
@@ -72,16 +99,12 @@ const ProductPage = async ({ params }: Props) => {
 
   return (
     <Container className="py-10">
-      {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Left — Images */}
         <ImageView images={product?.images ?? []} isStock={product?.stock} />
 
-        {/* Right — Details */}
         <div className="flex flex-col gap-5">
           <h1 className="text-2xl font-bold text-gray-800">{product?.name}</h1>
 
-          {/* Rating summary */}
           <div className="flex items-center gap-2">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
@@ -143,7 +166,6 @@ const ProductPage = async ({ params }: Props) => {
             className="w-full rounded-full py-3 text-base mt-2"
           />
 
-          {/* Trust Badges */}
           <div className="grid grid-cols-3 gap-3 border-t pt-4 mt-2">
             <div className="flex flex-col items-center text-center gap-1 text-xs text-gray-500">
               <Truck size={20} className="text-shop-dark-green" />
@@ -161,17 +183,13 @@ const ProductPage = async ({ params }: Props) => {
         </div>
       </div>
 
-      {/* Reviews Section */}
       <div className="mt-16 border-t pt-10">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-gray-800">
-            Customer Reviews
-          </h2>
+          <h2 className="text-xl font-bold text-gray-800">Customer Reviews</h2>
           <span className="text-sm text-gray-500">
             {avgRating} out of 5 · {reviews.length} reviews
           </span>
         </div>
-
         <div className="flex flex-col gap-5">
           {reviews.map((review, index) => (
             <div

@@ -1,3 +1,4 @@
+// components/ProductGrid.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -11,12 +12,23 @@ interface Props {
   productType: string[];
 }
 
-const ProductGrid: React.FC<Props> = ({ productType }) => {
+const SkeletonCard = () => (
+  <div className="border border-gray-200 rounded-md bg-white animate-pulse">
+    <div className="w-full h-64 bg-gray-200 rounded-t-md" />
+    <div className="p-3 flex flex-col gap-2">
+      <div className="h-3 bg-gray-200 rounded w-1/2" />
+      <div className="h-4 bg-gray-200 rounded w-3/4" />
+      <div className="h-3 bg-gray-200 rounded w-1/4" />
+      <div className="h-3 bg-gray-200 rounded w-1/3" />
+      <div className="h-8 bg-gray-200 rounded-full mt-1" />
+    </div>
+  </div>
+);
 
+const ProductGrid: React.FC<Props> = ({ productType }) => {
   const [selectedTab, setSelectedTab] = useState<string>(
     productType[0] ?? ""
   );
-
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -25,27 +37,17 @@ const ProductGrid: React.FC<Props> = ({ productType }) => {
 
     const fetchProducts = async () => {
       setLoading(true);
-
       try {
-
         const query = `
-          *[_type == "product" && variant == $variant]{
-            _id,
-            name,
-            images,
-            stock,
-            price,
-            categories,
-            status
+          *[_type == "product" && variant == $variant] {
+            _id, name, images, stock, price, discount, slug, status, variant,
+            "categories": categories[]->title
           }
         `;
-
         const response = await client.fetch<Product[]>(query, {
           variant: selectedTab,
         });
-
         setProducts(response);
-
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -54,12 +56,10 @@ const ProductGrid: React.FC<Props> = ({ productType }) => {
     };
 
     fetchProducts();
-
   }, [selectedTab]);
 
   return (
     <div className="mt-10">
-
       <HomeTabBar
         selectedTab={selectedTab}
         onTabSelect={setSelectedTab}
@@ -67,28 +67,20 @@ const ProductGrid: React.FC<Props> = ({ productType }) => {
       />
 
       {loading ? (
-
-        <div className="text-center py-10">
-          Loading products...
-        </div>
-
-      ) : products.length > 0 ? (
-
         <div className="grid grid-cols-3 md:grid-cols-5 gap-5 mt-10">
-          {products.map((product) => (
-            <ProductCard
-              key={product._id}
-              product={product}
-            />
+          {[...Array(10)].map((_, i) => (
+            <SkeletonCard key={i} />
           ))}
         </div>
-
+      ) : products.length > 0 ? (
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-5 mt-10">
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
       ) : (
-
         <NoProductAvailable selectedTab={selectedTab} />
-
       )}
-
     </div>
   );
 };

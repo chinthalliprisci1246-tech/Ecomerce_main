@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import { getLatestBlogs } from "@/sanity/quaries";
+import { getLatestBlogs } from "@/sanity/queries";
 import { Blog } from "@/sanity.types";
 import Image from "next/image";
 import Link from "next/link";
