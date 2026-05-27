@@ -21,9 +21,6 @@ const HomeBanner = () => {
           Buy Now
         </Link>
       </div>
-
-     
-
     </div>
   );
 };

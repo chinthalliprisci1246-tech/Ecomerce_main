@@ -1,12 +1,10 @@
 "use client"
 import { headerData } from '@/constants/data'
-import React  from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const HeaderMenu = () => {
     const pathname = usePathname();
-    console.log(pathname)
   return (
     <div className='hidden md:inline-flex w-1/3 items-center text-sm capitalize gap-7 text-lightColour font-normal'>
       {headerData?.map((item) => 
@@ -23,4 +21,4 @@ const HeaderMenu = () => {
   )
 }
 
-export default HeaderMenu 
+export default HeaderMenu;
