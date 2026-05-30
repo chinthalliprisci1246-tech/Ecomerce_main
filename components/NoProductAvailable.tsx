@@ -6,8 +6,8 @@ interface Props {
 
 const NoProductAvailable = ({ selectedTab }: Props) => {
   return (
-    <div className="flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
-      <h2 className="text-2xl font-bold text-gray-800">
+    <div className="flex flex-col items-center justify-center py-10 min-h-100 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
+      <h2 className="text-2xl font-bold text-green-800">
         No Product Available
       </h2>
 

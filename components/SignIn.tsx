@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 
@@ -29,7 +28,7 @@ const SignIn = () => {
   return (
     <button
       onClick={() => signIn("google", { callbackUrl: "/" })}
-      className="text-sm font-semibold border border-gray-800 text-gray-800 px-4 py-1.5 rounded-full hover:bg-gray-800 hover:text-white transition"
+      className="text-sm font-semibold border border-green-800 text-green-800 px-4 py-1.5 rounded-full hover:bg-green-800 hover:text-white transition"
     >
       Login
     </button>

@@ -1,14 +1,20 @@
 import React from "react";
 import { Title } from "./ui/text";
 import Link from "next/link";
-import Image from "next/image";
+
 
 const HomeBanner = () => {
   return (
-    <div className="bg-shop-light-pink rounded-lg px-10 lg:px-24 py-10 flex items-center justify-between max-w-7xl mx-auto">
+    <div className="bg-green-300 rounded-lg px-10 lg:px-24 py-10 flex items-center justify-between max-w-7xl mx-auto min-h-70"
+     style={{
+        backgroundImage: "url('/banner-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}>
 
       {/* TEXT */}
-      <div className="space-y-4">
+      <div className="space-y-8">
         <Title>
           Grab Upto 50% Off <br />
           On Selected Headphones

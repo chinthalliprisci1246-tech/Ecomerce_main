@@ -1,4 +1,4 @@
-import React from "react";
+
 import Image from "next/image";
 import { Title } from "./ui/text";
 import { urlFor } from "@/sanity/lib/image";
@@ -6,19 +6,14 @@ import { Category } from "@/sanity.types";
 import Link from "next/link";
 
 const HomeCategories = ({ categories }: { categories: Category[] }) => {
-  console.log(categories);
-
   return (
-    <div className="bg-white border border-shop_light_green/20 my-10 md:my-20 p-5 lg:p-7 rounded-md">
-
+    <div className="flex flex-col items-center justify-center py-10 min-h-50 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
       <Title className="border-b pb-3">Popular Categories</Title>
-
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-5">
-
         {categories?.map((category) => (
           <div
             key={category?._id}
-            className="group cursor-pointer bg-shop-light p-5 flex items-center gap-3"
+            className="group cursor-pointer bg-shop-light-green p-5 flex items-center gap-3"
           >
             {/* IMAGE PART */}
             {category?.image && (

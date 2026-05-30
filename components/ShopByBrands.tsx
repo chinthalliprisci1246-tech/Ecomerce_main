@@ -12,12 +12,12 @@ const ShopByBrands = async () => {
   const brands = await getAllBrands();
 
   return (
-    <div className='mb-10 lg:pb-20 bg-shop-light-text p-5 lg:p-7 rounded-md'>
+    <div className='mb-10 lg:pb-20 min-h-50   lg:p-7 bg-gray-100 rounded-xl p-6 mt-10 '>
       <div className='flex items-center gap-5 justify-between mb-10'>
         <Title>Shop By Brands</Title>
         <Link
           href={"/shop"}
-          className='text-sm font-semibold tracking-wide hover:text-shop-dark-green hoverEffect'
+          className='bg-shop-light-green px-5 py-2 rounded-lg text-md font-semibold tracking-wide hover:bg-shop-light-green/85 hoverEffect'
         >
           View all
         </Link>

@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { Facebook, Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
@@ -10,7 +9,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -63,7 +61,7 @@ const SocialMedia = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "p-2 border rounded-full hover:text-white hover:border-shop_light_green hoverEffect",
+                  "p-2 border-2 rounded-lg hover:text-white hover:bg-green-600 hoverEffect",
                   iconClassName
                 )}
               >
@@ -73,7 +71,7 @@ const SocialMedia = ({
 
             <TooltipContent
               className={cn(
-                "bg-white text-black font-semibold",
+                "bg-green-600 text-white font-semibold",
                 tooltipClassName
               )}
             >

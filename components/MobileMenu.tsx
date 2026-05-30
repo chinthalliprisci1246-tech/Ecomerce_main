@@ -1,5 +1,5 @@
 "use client";
-import { AlignLeft } from 'lucide-react'
+import { AlignLeft} from 'lucide-react'
 import React, { useState } from 'react'
 import SideMenu from './SideMenu';
 
@@ -8,7 +8,7 @@ const MobileMenu = () => {
   return (
     <>
     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-        <AlignLeft className='hover:text-darkColor hoverEffect md:hidden hover:cursor-pointer' />
+        <AlignLeft className='hover:text-shop-dark-green text-shop-light-green hoverEffect md:hidden hover:cursor-pointer' />
     </button>
     <div className=''>
     <SideMenu 
@@ -20,4 +20,4 @@ const MobileMenu = () => {
   )
 }
 
-export default MobileMenu
+export default MobileMenu;

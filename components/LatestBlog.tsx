@@ -10,17 +10,15 @@ import dayjs from "dayjs";
 
 const LatestBlog = async () => {
   const blogs = await getLatestBlogs();
-
   return (
-    <div className="mb-10 lg:mb-20">
-      <Title>Latest Blogs</Title>
-
+    <div className="mb-10 lg:mb-20 min-h-50 bg-gray-100 rounded-lg">
+      <Title className="text-center tracking-wider text-black/90 pt-5">Latest Blogs</Title>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
         {blogs?.map((blog: Blog) => (
           <div key={blog._id} className="bg-white shadow-sm rounded-md">
 
             {blog?.mainImage && (
-              <Link href={`/blog/${blog?.slug?.current}`}>
+              <Link href={`/blog`}>
                 <Image
                   src={urlFor(blog.mainImage).url()}
                   alt="blogImage"
@@ -42,7 +40,6 @@ const LatestBlog = async () => {
                   dayjs(blog.publishedAt).format("MMMM D, YYYY")}
               </p>
             </div>
-
           </div>
         ))}
       </div>
