@@ -1,10 +1,10 @@
 # eKart — Full-Stack E-Commerce Application
 
+[Live link]: https://ecomerce-main-one.vercel.app/
+
 A modern e-commerce storefront built with Next.js 16, Sanity CMS, Zustand, and NextAuth. Features a live product catalog, cart and wishlist management, blog, hot deals, Google OAuth login, and an embedded Sanity Studio.
 
 ---
-
-[Live link]: https://ecomerce-main-one.vercel.app/
 
 ## Tech Stack
 
