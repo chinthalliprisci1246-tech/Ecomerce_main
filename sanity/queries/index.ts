@@ -7,6 +7,9 @@ import {
   ALL_BRANDS_QUERY,
   PRODUCTS_BY_CATEGORY_QUERY,
   ALL_CATEGORIES_QUERY,
+  BRAND_BY_SLUG_QUERY,
+  PRODUCTS_BY_BRAND_QUERY,
+
 } from "./query";
 
 const getCategories = async (quantity?: number) => {
@@ -99,6 +102,31 @@ const getProductsByCategory = async (slug: string) => {
     return [];
   }
 };
+const getBrandBySlug = async (slug: string) => {
+  try {
+    const { data } = await sanityFetch({
+      query: BRAND_BY_SLUG_QUERY,
+      params: { slug },
+    });
+    return data ?? null;
+  } catch (error) {
+    console.error("Error fetching brand", error);
+    return null;
+  }
+};
+
+const getProductsByBrand = async (slug: string) => {
+  try {
+    const { data } = await sanityFetch({
+      query: PRODUCTS_BY_BRAND_QUERY,
+      params: { slug },
+    });
+    return data ?? [];
+  } catch (error) {
+    console.error("Error fetching products by brand", error);
+    return [];
+  }
+};
 
 export {
   getCategories,
@@ -108,4 +136,6 @@ export {
   getProductBySlug,
   getAllBrands,
   getProductsByCategory,
+  getBrandBySlug,
+  getProductsByBrand,
 };

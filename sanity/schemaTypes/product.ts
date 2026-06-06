@@ -52,7 +52,12 @@ export const product = defineType({
       type: "number",
       validation: (Rule) => Rule.required().min(0),
     }),
-
+    defineField({
+  name: "brand",
+  title: "Brand",
+  type: "reference",
+  to: [{ type: "brand" }],
+   }),
     defineField({
       name: "variant",
       title: "Product Type",
@@ -67,6 +72,7 @@ export const product = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    
 
     // ✅ Only ONE categories field — with references
     defineField({

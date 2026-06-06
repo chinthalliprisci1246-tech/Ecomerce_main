@@ -25,7 +25,7 @@ const ContactPage = () => {
         {/* Contact Info */}
         <div className="flex flex-col gap-6">
           <p className="text-gray-600 text-sm leading-relaxed">
-            Have a question or need help? Reach out to us and we'll get back to you as soon as possible.
+            Have a question or need help? Reach out to us and we will get back to you as soon as possible.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -48,7 +48,7 @@ const ContactPage = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {sent && (
             <div className="bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg px-4 py-3">
-              ✅ Message sent! We'll get back to you soon.
+              ✅ Message sent! We will get back to you soon.
             </div>
           )}
 

@@ -1,4 +1,4 @@
-// components/ProductCard.tsx
+
 import React from "react";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
@@ -8,8 +8,9 @@ import { Title } from "./ui/text";
 import PriceView from "./PriceView";
 import { Product } from "@/sanity.types";
 import AddToButtonCart from "./AddToButtonCart";
+import AddToWishlistButton from "./AddToWishlistButton";
 
-// Deterministic pseudo-random — same product always gets same rating
+
 function seededRandom(seed: string, index: number): number {
   let hash = 0;
   const str = seed + index;
@@ -42,7 +43,8 @@ const ProductCard = ({ product }: { product: Product }) => {
               }`}
             />
           )}
-
+           <AddToWishlistButton product={product} />
+           
           {product?.status === "sale" && (
             <p className="absolute top-2 left-2 z-10 text-xs border border-shop-dark-blue/50 px-2 rounded-full group-hover:border-shop-light-green group-hover:text-shop-light-green hoverEffect">
               Sale!

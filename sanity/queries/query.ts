@@ -49,3 +49,15 @@ export const ALL_CATEGORIES_QUERY = `
     _id, title, slug, image
   }
 `;
+export const BRAND_BY_SLUG_QUERY = `
+  *[_type == "brand" && slug.current == $slug][0] {
+    _id, title, slug, logo
+  }
+`;
+
+export const PRODUCTS_BY_BRAND_QUERY = `
+  *[_type == "product" && brand->slug.current == $slug] {
+    _id, name, slug, images, price, stock, status, variant, discount,
+    "categories": categories[]->title
+  }
+`;

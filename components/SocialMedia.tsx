@@ -20,22 +20,22 @@ interface Props {
 const socialLink = [
   {
     title: "YouTube",
-    href: "#",
+    href: "https://youtu.be/PoMEGxNLwFc?si=vBO246Df0AgGsvt_",
     icon: <Youtube className="w-5 h-5" />,
   },
   {
     title: "LinkedIn",
-    href: "#",
+    href: "www.linkedin.com/in/imdkdeveloper",
     icon: <Linkedin className="w-5 h-5" />,
   },
   {
     title: "GitHub",
-    href: "#",
+    href: "https://github.com/chinthalliprisci1246-tech",
     icon: <Github className="w-5 h-5" />,
   },
   {
     title: "Facebook",
-    href: "#",
+    href: "https://github.com/chinthalliprisci1246-tech",
     icon: <Facebook className="w-5 h-5" />,
   },
   {
