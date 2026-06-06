@@ -17,7 +17,7 @@ const ShopByBrands = async () => {
         <Title>Shop By Brands</Title>
         <Link
           href={"/shop"}
-          className='bg-shop-light-green px-5 py-2 rounded-lg text-md font-semibold tracking-wide hover:bg-shop-light-green/85 hoverEffect'
+          className='bg-white  px-5 py-2 rounded-full text-md font-semibold tracking-wide hover:bg-shop-light-green/85 hoverEffect '
         >
           View all
         </Link>
